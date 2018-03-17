@@ -2,130 +2,123 @@ package com.example.sasham.passwordkeeper.model;
 
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Id;
+import org.greenrobot.greendao.annotation.Keep;
 import org.greenrobot.greendao.annotation.NotNull;
 import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.DaoException;
+
+import java.util.Date;
 
 /**
  * Created by Sasha M on 15.03.2018.
  */
 
-@Entity(nameInDb="passwords",active = true)
+@Entity(nameInDb = "passwords", active = true)
 public class Password {
 
     @Id
-    private Long mId;
+    private Long id;
 
     @NotNull
-    private String mTitle;
+    private String title;
 
-    private String mEmail;
+    private String email;
 
     @NotNull
-    private String mKey;
+    private String key;
 
-    private String mDescription;
+    private String description;
 
-    /** Used to resolve relations */
+    @NotNull
+    private Date date;
+
+//    hash = 943856241
+    @Keep
+    public Password(Long mId, @NotNull String title, String email, @NotNull String key,
+                    String description, @NotNull Date date) {
+        this.id = mId;
+        this.title = title;
+        this.email = email;
+        this.key = key;
+        this.description = description;
+        this.date = date;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date mDate) {
+        this.date = mDate;
+    }
+
+    /**
+     * Used to resolve relations
+     */
     @Generated(hash = 2040040024)
     private transient DaoSession daoSession;
 
-    /** Used for active entity operations. */
+    /**
+     * Used for active entity operations.
+     */
     @Generated(hash = 1189424892)
     private transient PasswordDao myDao;
 
-    @Generated(hash = 1787163168)
-    public Password(Long mId, @NotNull String mTitle, String mEmail,
-            @NotNull String mKey, String mDescription) {
-        this.mId = mId;
-        this.mTitle = mTitle;
-        this.mEmail = mEmail;
-        this.mKey = mKey;
-        this.mDescription = mDescription;
-    }
 
     @Generated(hash = 565943725)
     public Password() {
     }
 
     public Long getId() {
-        return mId;
+        return id;
     }
 
     public void setId(Long mId) {
-        this.mId = mId;
+        this.id = mId;
     }
 
     public String getTitle() {
-        return mTitle;
+        return title;
     }
 
     public void setTitle(String mTitle) {
-        this.mTitle = mTitle;
+        this.title = mTitle;
     }
 
     public String getEmail() {
-        return mEmail;
+        return email;
     }
 
     public void setEmail(String mEmail) {
-        this.mEmail = mEmail;
+        this.email = mEmail;
     }
 
     public String getKey() {
-        return mKey;
+        return key;
     }
 
     public void setKey(String mKey) {
-        this.mKey = mKey;
+        this.key = mKey;
     }
 
-    public String getmDescription() {
-        return mDescription;
+    public String getDescription() {
+        return description;
     }
 
-    public void setmDescription(String mDescription) {
-        this.mDescription = mDescription;
+    public void setDescription(String mDescription) {
+        this.description = mDescription;
     }
 
-    public Long getMId() {
-        return this.mId;
-    }
-
-    public void setMId(Long mId) {
-        this.mId = mId;
-    }
-
-    public String getMTitle() {
-        return this.mTitle;
-    }
-
-    public void setMTitle(String mTitle) {
-        this.mTitle = mTitle;
-    }
-
-    public String getMEmail() {
-        return this.mEmail;
-    }
-
-    public void setMEmail(String mEmail) {
-        this.mEmail = mEmail;
-    }
-
-    public String getMKey() {
-        return this.mKey;
-    }
-
-    public void setMKey(String mKey) {
-        this.mKey = mKey;
-    }
-
-    public String getMDescription() {
-        return this.mDescription;
-    }
-
-    public void setMDescription(String mDescription) {
-        this.mDescription = mDescription;
+    @Override
+    public String toString() {
+        return "Password{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", email='" + email + '\'' +
+                ", key='" + key + '\'' +
+                ", description='" + description + '\'' +
+                ", date=" + date +
+                '}';
     }
 
     /**

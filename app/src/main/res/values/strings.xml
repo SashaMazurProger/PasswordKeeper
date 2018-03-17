@@ -4,4 +4,8 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="create_pass_title_label">Title</string>
+    <string name="create_pass_key_label">Password</string>
+    <string name="create_pass_email_label">Email</string>
+    <string name="empty_pass_field">Please fill in the required fields</string>
 </resources>
